@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import reactTable from "react-table";
+import reactVirtualized from "react-virtualized";
 import "./styles.css";
 
 class App extends React.Component {
