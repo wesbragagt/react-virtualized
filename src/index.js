@@ -1,24 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import reactTable from "react-table";
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 import reactVirtualized from "react-virtualized";
 import "./styles.css";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>Hello CodeSandbox</h1>
-        <h2>Start editing to see some magic happen!</h2>
-      </div>
-    );
-  }
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-
-// importing mock data for testing
 const mockData = [
   { id: 1, first_name: "Viole" },
   { id: 2, first_name: "Carmella" },
@@ -1021,3 +1007,33 @@ const mockData = [
   { id: 999, first_name: "Krissy" },
   { id: 1000, first_name: "Jillian" }
 ];
+
+console.log(mockData.length);
+class App extends React.Component {
+  render() {
+    const data = mockData;
+    const columns = [
+      {
+        Header: "first_name",
+        accessor: "first_name"
+      },
+      { Header: "id", accessor: "id" }
+    ];
+    return (
+      <div className="App">
+        <h1>React Table with Virtualized</h1>
+        <ReactTable
+          data={data}
+          columns={columns}
+          defaultPageSize={100}
+          pageSizeOptions={[20, 50, 100, 500, 1000]}
+        />
+      </div>
+    );
+  }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+// importing mock data for testing
